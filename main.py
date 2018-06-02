@@ -6,20 +6,19 @@ Train number can be provided as a command line argument or as input in the progr
 
 import sys
 
-import GetInfo
+import Train
+
 
 
 if len(sys.argv) > 1:
     train_number = sys.argv[1].strip()
 else:
     train_number = input("Enter train number : ").strip()
-    
-start_date = "today"
 
-train_details = GetInfo.get_train_details(train_number , start_date)
 
-for rows in train_details:
-    for cols in rows:
-        print(cols , end = "    ")
-    print()
-    
+train = Train.Train(train_number)
+train.retrieve_train_details()
+#train_details = train.get_train_details()
+train.store_data_to_csv()
+
+#print(train_details)

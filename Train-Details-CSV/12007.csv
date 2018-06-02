@@ -1,0 +1,5 @@
+Station,Platform,Sch. Arrival,Sch. Departure,Actual Arrival / Departure,Avg. Speed,Train Status
+Chennai Central (MAS),6,Source,06:00 AM,Source / 06:03 AM,-,Departed / 03 Mins Late
+Katpadi Jn (KPD),-,07:38 AM,07:40 AM,07:48 AM / 07:50 AM,124Km/Hr,Departed / 10 Mins Late
+Ksr Bengaluru (SBC),7,10:50 AM,11:00 AM,10:53 AM / 11:02 AM,122Km/Hr,Departed / 03 Mins Late
+Mysuru Jn (MYS),1,01:00 PM,Destination,01:05 PM / Destination,107Km/Hr,Arrived / 05 Mins Late
