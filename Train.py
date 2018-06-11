@@ -30,6 +30,9 @@ class Train:
 
         self.train_details["Train Name"] = train_details_bs4.title.text.split('/')[0]
         
+        if self.train_details["Train Name"] == '':
+            print("Invalid Train Number.")
+            return 0
         
         
         station_fields = ["Station Name" , "Platform" , "Scheduled Arrival" , 
@@ -60,8 +63,8 @@ class Train:
         
         print("Done.")
         
-    def store_to_json(self):
         
+    def store_to_json(self):
         with open(".\\Train-Details-Json\\{}.json".format(self.train_details["Train Number"]) , "w") as output_file:
             json.dump(self.__dict__ , output_file)
             
