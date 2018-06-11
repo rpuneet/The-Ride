@@ -12,8 +12,8 @@ from os import makedirs # To make the Train-Details-Json directory (This stores 
 
 
 ''' Create a new directory if it doesn't exist ''' 
-os.makedirs("Train-Details-Json" , exist_ok = True) 
-os.makedirs("Train-Details-CSV" , exist_ok = True)
+makedirs("Train-Details-Json" , exist_ok = True) 
+makedirs("Train-Details-CSV" , exist_ok = True)
 
 
 ''' Checks if train number was provided in the command line or not '''
