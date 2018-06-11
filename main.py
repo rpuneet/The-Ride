@@ -8,17 +8,16 @@ import sys
 
 import Train
 
-
-
 if len(sys.argv) > 1:
     train_number = sys.argv[1].strip()
 else:
     train_number = input("Enter train number : ").strip()
 
+start_day = "today"
 
-train = Train.Train(train_number)
-train.retrieve_train_details()
-#train_details = train.get_train_details()
-train.store_data_to_csv()
+if len(sys.argv) == 2:
+    start_day = sys.argv[2].strip()
 
-#print(train_details)
+train = Train(train_number = train_number , start = start_day)
+train.retrieve_details()
+train.store_to_json()

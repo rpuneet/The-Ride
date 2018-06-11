@@ -8,53 +8,62 @@ import pandas as pd
 
 from os import getcwd
 
+import json
+
 class Train:
-    def __init__(self , train_number = ""):
-        self.train_number = train_number
-        self.train_name = ""
-        self.start_date = "today"
-        self.train_details = []
     
-    def assign_train_number(self , train_number):
-        self.train_number = train_number
+    def __init__(self , train_number = "" , start = "today"):
+        self.train_details = {"Train Name" : "-" , "Train Number" : "-" , "Source": "-" , "Destination":"-" , "Start Day" : "-"}
+        self.train_details["Train Number"] = train_number
+        self.train_details["Start Day"] = start
+        self.stations = []
         
-    def get_train_details(self):
-        if self.train_details == []:
-            print("No data to show.")
-            return 0
         
-        return self.train_details
-    
-    def retrieve_train_details(self):
-        if self.train_number == "":
+    def retrieve_details(self):
+        if self.train_details["Train Number"] == "":
             print("Train number is not assigned.")
             return 0
-        print("Retrieving train details from runningstatus.in ...." , end = " ")
-        train_details_runningstatus_webpage = requests.get("https://runningstatus.in/status/"+self.train_number+"-"+self.start_date)
-        train_details_bs4 = bs4.BeautifulSoup(train_details_runningstatus_webpage.text , 'lxml')
+        print("Retrieving details from runningstatus.in ...." , end = " ")
         
+        train_details_runningstatus_webpage = requests.get("https://runningstatus.in/status/{}-{}".format(self.train_details["Train Number"] , self.train_details["Start Day"]))
+        train_details_bs4 = bs4.BeautifulSoup(train_details_runningstatus_webpage.text , 'lxml')
+
+        self.train_details["Train Name"] = train_details_bs4.title.text.split('/')[0]
+        
+        
+        
+        station_fields = ["Station Name" , "Platform" , "Scheduled Arrival" , 
+                         "Scheduled Departure" , "Actual Arrival / Departure" ,
+                         "Average Speed" , "Train Status"]
         
         table = train_details_bs4.find("table" , {"class" : "table table-striped table-bordered"})
         
         table_body = table.find('tbody')
-    
+        station_details = []
         rows = table_body.find_all('tr')
         for row in rows:
             cols = row.find_all('td')
             cols = [ele.text.strip() for ele in cols]
-            self.train_details.append([ele for ele in cols if ele])
+            station_details.append([ele for ele in cols if ele])
+        
+        for station in station_details:
+            i = 0
+            current_station = {}
+            for data in station:
+                
+                current_station[station_fields[i]] = data
+                i+=1
+            self.stations.append(current_station)
+        
+        self.train_details["Source"] = self.stations[0]["Station Name"]
+        self.train_details["Destination"] = self.stations[-1]["Station Name"]
+        
+        print("Done.")
+        
+    def store_to_json(self):
+        
+        with open(".\\Train-Details-Json\\{}.json".format(self.train_details["Train Number"]) , "w") as output_file:
+            json.dump(self.__dict__ , output_file)
             
-        print("Done.")
-        
-    def store_data_to_csv(self):
-        print("Storing data in csv file ... " , end = " ")
-        data_details = ["Station" , "Platform" , "Sch. Arrival" , "Sch. Departure" , "Actual Arrival / Departure" , "Avg. Speed" , "Train Status"]
-        
-        for index in range(len(self.train_details)):
-            while len(self.train_details[index]) != 7:
-                self.train_details[index].append("-")
-        
-        data_frame = pd.DataFrame(self.train_details , columns = data_details)
-        data_frame.to_csv(getcwd() + "\\Train-Details-CSV\\" + self.train_number + ".csv" , index = False , na_rep = '-')
-        print("Done.")
+
             

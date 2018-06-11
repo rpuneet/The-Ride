@@ -1,0 +1,15 @@
+Station,Platform,Sch. Arrival,Sch. Departure,Actual Arrival / Departure,Avg. Speed,Train Status
+Muri (MURI),2,Source,08:10 AM,E.T.A.: 12:00 AM / E.T.D.: 06:10 PM,-,-
+Tatisilwai (TIS),-,09:09 AM,09:10 AM,E.T.A.: 06:59 PM / E.T.D.: 07:00 PM,-,-
+Namkom (NKM),-,09:19 AM,09:20 AM,E.T.A.: 07:07 PM / E.T.D.: 07:08 PM,-,-
+Ranchi (RNC),5,09:35 AM,09:45 AM,E.T.A.: 07:17 PM / E.T.D.: 07:27 PM,-,-
+Hatia (HTE),-,10:05 AM,10:15 AM,E.T.A.: 07:38 PM / E.T.D.: 07:48 PM,-,-
+Govindpur Road (GBX),-,10:49 AM,10:50 AM,E.T.A.: 08:15 PM / E.T.D.: 08:16 PM,-,-
+Pokla (PKF),-,11:09 AM,11:10 AM,E.T.A.: 08:29 PM / E.T.D.: 08:30 PM,-,-
+Bano (BANO),-,11:39 AM,11:40 AM,E.T.A.: 08:55 PM / E.T.D.: 08:56 PM,-,-
+Orga (ORGA),-,12:39 PM,12:40 PM,E.T.A.: 09:35 PM / E.T.D.: 09:36 PM,-,-
+Rourkela (ROU),-,02:05 PM,02:30 PM,E.T.A.: 10:31 PM / E.T.D.: 10:56 PM,-,-
+Rajgangpur (GP),-,03:03 PM,03:04 PM,E.T.A.: 11:17 PM / E.T.D.: 11:18 PM,-,-
+Bamra (BMB),-,03:33 PM,03:34 PM,E.T.A.: 11:32 PM / E.T.D.: 11:33 PM,-,-
+Jharsuguda Jn. (JSG),-,04:30 PM,04:40 PM,E.T.A.: 11:51 PM / E.T.D.: 12:01 AM,-,-
+Sambalpur (SBP),-,05:45 PM,Destination,E.T.A.: 12:38 AM / E.T.D.: 05:30 AM,-,-
