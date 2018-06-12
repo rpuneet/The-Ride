@@ -3,7 +3,7 @@
 A program which retrieves information of a train (Indian Railways) from the internet and stores the data in a .json file.
 
 # Language 
--Python
+1. Python
 
 # Packages Used
 1. Beautiful Soup
