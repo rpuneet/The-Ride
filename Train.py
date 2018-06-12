@@ -21,8 +21,8 @@ class Train:
         self.train_details = {"Train Name" : "-" , "Train Number" : "-" , "Source": "-" , "Destination":"-" , "Start Day" : "-"}
         
         if not train_number.isdigit() or len(train_number) != 5 :
-            print ("Invalid Train Number.")
-            exit(1)
+            raise Exception("Invalid Train Number.")
+           
         self.train_details["Train Number"] = train_number
         self.train_details["Start Day"] = start
         self.stations = []
@@ -30,11 +30,6 @@ class Train:
         
     def retrieve_details(self):
         ''' Retrieves details of the train and its route from https://runningstatus.in/ '''
-        
-        
-        if self.train_details["Train Number"] == "":
-            print("Train number is not assigned.")
-            exit(1)
         
         
         # Retrieving data from the website and creating a bs4 object.
@@ -46,8 +41,7 @@ class Train:
         
         ''' Checking if the train number provided is valid or not '''
         if self.train_details["Train Name"] == '':
-            print("Invalid Train Number.")
-            exit(1)
+            raise Exception("Invalid Train Number.")
         
         
         station_fields = ["Station Name" , "Platform" , "Scheduled Arrival" , 
@@ -78,8 +72,6 @@ class Train:
         self.train_details["Source"] = self.stations[0]["Station Name"]
         self.train_details["Destination"] = self.stations[-1]["Station Name"]
         
-        print("Done.")
-        
     def store_to_csv(self):
         '''  Stores the details of the train in a csv file in Train-Details-CSV directory. '''
         data_frame = pd.DataFrame(self.stations)
@@ -95,11 +87,11 @@ class Train:
         
         data_frame = data_frame[station_fields]  #To place the fields in correct order
         ''' Storing in the csv file '''
-        data_frame.to_csv(".\\Train-Details-CSV\\{}.csv".format(self.train_details["Train Number"]) , index = False)
+        data_frame.to_csv("./Train-Details-CSV/{}.csv".format(self.train_details["Train Number"]) , index = False)
         
     def store_to_json(self):
         ''' Stores the details of the train in a json file in Train-Details-Json directory. '''
-        with open(".\\Train-Details-Json\\{}.json".format(self.train_details["Train Number"]) , "w") as output_file:
+        with open("./Train-Details-Json/{}.json".format(self.train_details["Train Number"]) , "w") as output_file:
             json.dump(self.__dict__ , output_file)
             
 

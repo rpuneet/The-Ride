@@ -8,14 +8,22 @@ import sys              # To get the input from command line
 
 import Train            # Module which retrivees and stores data of a particluar train
 
-from os import makedirs # To make the Train-Details-Json directory (This stores all the json files)
+import os , errno       # To make the Train-Details-Json and Train-Details-Json directory (This stores all the json files)
 
 
 ''' Create a new directory if it doesn't exist ''' 
-makedirs("Train-Details-Json" , exist_ok = True) 
-makedirs("Train-Details-CSV" , exist_ok = True)
-
-
+try:
+    os.makedirs("Train-Details-Json" ) 
+except OSError as e:
+    if e.errno != errno.EEXIST:
+        raise
+try:
+    os.makedirs("Train-Details-CSV" )
+except OSError as e:
+    if e.errno != errno.EEXIST:
+        raise
+        
+    
 ''' Checks if train number was provided in the command line or not '''
 if len(sys.argv) > 1:
     train_number = sys.argv[1].strip()
