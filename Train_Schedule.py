@@ -22,6 +22,7 @@ if len(sys.argv) > 1:
 else:
     train_number = input("Enter train number : ").strip()
 
+
 start_day = "today"
 ''' Checks if start day was provided in the command line or not '''
 if len(sys.argv) > 2:

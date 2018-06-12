@@ -19,6 +19,10 @@ class Train:
         '''
         
         self.train_details = {"Train Name" : "-" , "Train Number" : "-" , "Source": "-" , "Destination":"-" , "Start Day" : "-"}
+        
+        if not train_number.isdigit() or len(train_number) != 5 :
+            print ("Invalid Train Number.")
+            exit(1)
         self.train_details["Train Number"] = train_number
         self.train_details["Start Day"] = start
         self.stations = []
@@ -30,9 +34,8 @@ class Train:
         
         if self.train_details["Train Number"] == "":
             print("Train number is not assigned.")
-            return 0
+            exit(1)
         
-        print("Retrieving details from runningstatus.in ...." , end = " ")
         
         # Retrieving data from the website and creating a bs4 object.
         train_details_runningstatus_webpage = requests.get("https://runningstatus.in/status/{}-{}".format(self.train_details["Train Number"] , self.train_details["Start Day"]))
@@ -44,7 +47,7 @@ class Train:
         ''' Checking if the train number provided is valid or not '''
         if self.train_details["Train Name"] == '':
             print("Invalid Train Number.")
-            return 0
+            exit(1)
         
         
         station_fields = ["Station Name" , "Platform" , "Scheduled Arrival" , 
