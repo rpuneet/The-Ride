@@ -26,9 +26,9 @@ except OSError as e:
     
 ''' Checks if train number was provided in the command line or not '''
 if len(sys.argv) > 1:
-    train_number = sys.argv[1].strip()
+    train_number = sys.argv[1]
 else:
-    train_number = input("Enter train number : ").strip()
+    train_number = input("Enter train number : ")
 
 
 start_day = "today"
