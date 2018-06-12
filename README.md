@@ -20,7 +20,7 @@ There are two ways to use this program.
 (Instead of py use the command for running python files.)
 train_number - This is a five digit train number.
     If train number is not provided it will ask for it during runtime.
-Start day - It is the day when train starts from source station.(Ex - Today , Yesterday , etc.)
+Start day - It is the day when train starts from source station.(Ex - today , yesterday , etc.)
     If start day is not provided, start day will be considered today
 
 2. Open the Train_Schedule.py file by double clicking and enter the train number.
