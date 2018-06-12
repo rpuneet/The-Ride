@@ -6,10 +6,10 @@ A program which retrieves information of a train (Indian Railways) from the inte
 -Python
 
 # Packages Used
--Beautiful Soup
--Requests
--Pandas
--Json
+1. Beautiful Soup
+2. Requests
+3. Pandas
+4. Json
 
 # How to use?
 There are two ways to use this program.
@@ -26,8 +26,8 @@ Start day - It is the day when train starts from source station.(Ex - Today , Ye
 2. Open the Train_Schedule.py file by double clicking and enter the train number.
 
 # Output
-1. A {train_number}.json file which will contain all the informations regarding the train.
-2. A {train_number}.csv file which will contain a spreadsheet of the stations the train stops at.
+1. A {train_number}.json file which contains all the informations regarding the train.
+2. A {train_number}.csv file which contains a spreadsheet of the stations the train stops at.
 
 
 (Make sure you have an active internet connection and the packages mentioned above.)
